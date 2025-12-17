@@ -1,0 +1,221 @@
+.transparency-container {
+  padding: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+  min-height: 80vh;
+  margin-top: 80px; // Added for navbar spacing
+
+  .header-section {
+    text-align: center;
+    margin-bottom: 3rem;
+
+    h1 {
+      font-size: 2.5rem;
+      color: #2c3e50;
+      margin-bottom: 1rem;
+      
+      span {
+        color: #e74c3c;
+      }
+    }
+
+    p {
+      color: #7f8c8d;
+      font-size: 1.1rem;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+  }
+
+  .stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+    margin-bottom: 3rem;
+
+    .stat-card {
+      background: white;
+      padding: 1.5rem;
+      border-radius: 12px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+      text-align: center;
+      transition: transform 0.3s ease;
+
+      &:hover {
+        transform: translateY(-5px);
+      }
+
+      h3 {
+        font-size: 2rem;
+        color: #2c3e50;
+        margin-bottom: 0.5rem;
+      }
+
+      p {
+        color: #95a5a6;
+        font-size: 0.9rem;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+      }
+    }
+  }
+
+  .blockchain-visualizer {
+    background: #f8f9fa;
+    padding: 2rem;
+    border-radius: 16px;
+    overflow-x: auto;
+    margin-bottom: 3rem;
+    border: 1px solid #e9ecef;
+
+    .chain-container {
+      display: flex;
+      align-items: center;
+      gap: 2rem;
+      padding: 1rem;
+      min-width: max-content;
+
+      .block {
+        background: white;
+        width: 280px;
+        padding: 1.5rem;
+        border-radius: 12px;
+        border: 2px solid #e9ecef;
+        position: relative;
+        cursor: pointer;
+        transition: all 0.3s ease;
+
+        &:hover {
+          border-color: #3498db;
+          box-shadow: 0 8px 15px rgba(52, 152, 219, 0.1);
+        }
+
+        &.verified {
+          border-color: #2ecc71;
+          
+          &::after {
+            background: #2ecc71;
+          }
+        }
+
+        &.broken {
+          border-color: #e74c3c;
+        }
+
+        // Connector line
+        &:not(:last-child)::after {
+          content: '';
+          position: absolute;
+          right: -2rem;
+          top: 50%;
+          width: 2rem;
+          height: 2px;
+          background: #bdc3c7;
+          z-index: 1;
+        }
+
+        .block-header {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          margin-bottom: 1rem;
+          border-bottom: 1px solid #f1f2f6;
+          padding-bottom: 0.5rem;
+
+          .block-number {
+            font-weight: bold;
+            color: #34495e;
+          }
+
+          .timestamp {
+            font-size: 0.75rem;
+            color: #95a5a6;
+          }
+        }
+
+        .block-body {
+          font-size: 0.9rem;
+
+          .row {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 0.5rem;
+            
+            span:first-child {
+              color: #7f8c8d;
+            }
+            
+            span:last-child {
+              font-weight: 600;
+              color: #2c3e50;
+            }
+          }
+
+          .hash-row {
+            margin-top: 1rem;
+            
+            .label {
+              display: block;
+              font-size: 0.7rem;
+              color: #95a5a6;
+              margin-bottom: 0.2rem;
+            }
+            
+            .hash {
+              display: block;
+              font-family: monospace;
+              font-size: 0.7rem;
+              background: #f1f2f6;
+              padding: 0.25rem;
+              border-radius: 4px;
+              word-break: break-all;
+              color: #7f8c8d;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .integrity-section {
+    text-align: center;
+    
+    button {
+      background: #2c3e50;
+      color: white;
+      border: none;
+      padding: 1rem 2rem;
+      font-size: 1.1rem;
+      border-radius: 8px;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      transition: background 0.3s ease;
+
+      &:hover {
+        background: #34495e;
+      }
+
+      &.verifying {
+        background: #f39c12;
+      }
+
+      &.success {
+        background: #2ecc71;
+      }
+
+      &.error {
+        background: #e74c3c;
+      }
+    }
+    
+    .status-message {
+      margin-top: 1rem;
+      font-weight: 500;
+      
+      &.success { color: #2ecc71; }
+      &.error { color: #e74c3c; }
+    }
+  }
+}

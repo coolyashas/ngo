@@ -1,0 +1,19 @@
+tasks:
+  - init: npm install
+    command: npm run dev
+    openMode: tab-after
+
+ports:
+  - port: 3000
+    visibility: private
+    onOpen: open-browser
+
+github:
+  prebuilds:
+    main: true
+    branches: true
+    pullRequests: true
+    pullRequestsFromForks: true
+    addCheck: true
+    addComment: false
+    addBadge: true
