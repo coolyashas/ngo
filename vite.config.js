@@ -1,8 +1,8 @@
-import react from "@vitejs/plugin-react";
-import path from "path";
 import { defineConfig } from "vite";
+import react from "@vitejs/plugin-react";
 import { VitePWA } from "vite-plugin-pwa";
 import svgr from "vite-plugin-svgr";
+import path from "node:path";
 
 export default defineConfig({
   plugins: [
@@ -27,61 +27,49 @@ export default defineConfig({
           },
         ],
       },
-
       workbox: {
         cleanupOutdatedCaches: true,
         skipWaiting: true,
         clientsClaim: true,
-
         runtimeCaching: [
           {
-            urlPattern: new RegExp(
-              "^https://fonts.(?:googleapis|gstatic).com/(.*)",
-            ),
+            urlPattern: /^https:\/\/fonts\.(googleapis|gstatic)\.com\/.*/i,
             handler: "CacheFirst",
             options: {
               cacheName: "google-fonts",
-              expiration: {
-                maxEntries: 30,
-              },
-              cacheableResponse: {
-                statuses: [0, 200],
-              },
+              expiration: { maxEntries: 30 },
+              cacheableResponse: { statuses: [0, 200] },
             },
           },
-
           {
-            urlPattern: /\.(?:png|gif|jpg|jpeg|svg|webp)$/,
+            urlPattern: /\.(png|gif|jpg|jpeg|svg|webp)$/i,
             handler: "CacheFirst",
             options: {
               cacheName: "images",
-              expiration: {
-                maxEntries: 60,
-              },
+              expiration: { maxEntries: 60 },
             },
           },
         ],
       },
     }),
   ],
+
   resolve: {
     alias: {
-      "@components": path.resolve(__dirname, "./src/components"),
-      "@hooks": path.resolve(__dirname, "./src/hooks"),
-      "@pages": path.resolve(__dirname, "./src/pages"),
-      "@redux": path.resolve(__dirname, "./src/redux"),
-      "@service": path.resolve(__dirname, "./src/service"),
-      "@utils": path.resolve(__dirname, "./src/utils"),
-      "@styles": path.resolve(__dirname, "./src/styles"),
-      "@": path.resolve(__dirname, "./src"),
+      "@": path.resolve(__dirname, "src"),
+      "@components": path.resolve(__dirname, "src/components"),
+      "@hooks": path.resolve(__dirname, "src/hooks"),
+      "@pages": path.resolve(__dirname, "src/pages"),
+      "@redux": path.resolve(__dirname, "src/redux"),
+      "@service": path.resolve(__dirname, "src/service"),
+      "@utils": path.resolve(__dirname, "src/utils"),
+      "@styles": path.resolve(__dirname, "src/styles"),
     },
   },
+
   server: {
     host: true,
     strictPort: true,
     port: 3000,
-  },
-  watch: {
-    usePolling: true,
   },
 });
