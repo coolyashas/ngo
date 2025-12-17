@@ -1,7 +1,7 @@
 import { Button, Footer, Loading, Navbar } from "@components/shared";
 import EventCard from "@components/shared/cards/event/EventCard";
 import EventSlider from "@components/shared/cards/event/EventSlider";
-import CreateEvent from "@components/shared/createEvent/createEvent";
+import CreateEvent from "@components/shared/createEvent/CreateEvent";
 import { GetAllEvents } from "@service/OpenGivApi";
 import ComponentHelmet from "@utils/ComponentHelmet";
 import { useEffect, useState } from "react";
