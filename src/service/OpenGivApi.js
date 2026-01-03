@@ -38,7 +38,7 @@ export const RegisterUser = async (credentials) => {
 // get all clubs
 export const GetAllClubs = async () => {
   try {
-    const clubs = await Axios.get(clubEndpoints.all);
+    const clubs = await Axios.get(clubEndpoints.all, { withCredentials: true });
     return clubs;
   } catch (error) {
     return error.response;
@@ -48,7 +48,7 @@ export const GetAllClubs = async () => {
 // get all events
 export const GetAllEvents = async () => {
   try {
-    const events = await Axios.get(eventEndpoints.all);
+    const events = await Axios.get(eventEndpoints.all, { withCredentials: true });
     return events;
   } catch (error) {
     return error.response;
