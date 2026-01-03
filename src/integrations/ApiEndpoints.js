@@ -1,4 +1,4 @@
-const API = import.meta.env.VITE_API_URL;
+const API = import.meta.env.VITE_API_URL?.replace(/\/$/, ""); // Remove trailing slash if present
 
 const userEndpoints = {
   details: (userName) => `${API}/user?userName=${userName}`,

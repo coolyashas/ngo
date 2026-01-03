@@ -9,8 +9,7 @@ export const apiConnector = async (method, url, bodyData, headers, params) => {
       data: bodyData ? bodyData : null,
       headers: headers ? headers : null,
       params: params ? params : null,
-      crossOrigin: true,
-      allowCredentials: true,
+      withCredentials: true,
     });
 
     if (response.status === 400) {
