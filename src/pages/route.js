@@ -21,6 +21,7 @@ export { default as BlockchainViewer } from "./donations/BlockchainViewer";
 
 // Campaign Routes
 export { default as CreateCampaign } from "./campaigns/CreateCampaign";
+export { default as CampaignDetails } from "./campaigns/CampaignDetails";
 
 export { default as Profile } from "./profile/Profile";
 

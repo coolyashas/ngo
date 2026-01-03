@@ -9,6 +9,7 @@ import {
   Shop,
   BlockchainViewer,
   CreateCampaign,
+  CampaignDetails,
 } from "@pages/route";
 import Trending from "@pages/Trending";
 import { lazy } from "react";
@@ -39,6 +40,7 @@ const routesConfig = [
   { path: "/shop", element: <Shop /> },
   { path: "/donations", element: <BlockchainViewer /> },
   { path: "/campaigns/create", element: <CreateCampaign /> },
+  { path: "/campaigns/:id", element: <CampaignDetails /> },
   { path: "/campaigns", element: <Trending /> },
   { path: "*", element: <Error404 /> },
 ];
