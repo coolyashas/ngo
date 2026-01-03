@@ -41,6 +41,7 @@ const donationEndpoints = {
   all: `${API}/api/donations/public-ledger`,
   create: `${API}/api/donations`,
   chainStatus: `${API}/api/donations/chain-status`,
+  fixIntegrity: `${API}/api/donations/fix-integrity`,
 };
 
 const chatbotEndpoints = {

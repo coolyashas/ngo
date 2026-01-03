@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Navbar } from "../../components/shared";
 import { apiConnector } from "../../integrations/ApiConnector";
 import { donationEndpoints } from "../../integrations/ApiEndpoints";
-import { FaCheckCircle, FaShieldAlt, FaLink, FaCube, FaTimes, FaTrash } from "react-icons/fa";
+import { FaCheckCircle, FaShieldAlt, FaLink, FaCube, FaTimes, FaTrash, FaTools } from "react-icons/fa";
 import "./BlockchainViewer.scss";
 
 const BlockchainViewer = () => {
@@ -10,6 +10,7 @@ const BlockchainViewer = () => {
   const [stats, setStats] = useState({ totalDonated: 0, totalBlocks: 0 });
   const [loading, setLoading] = useState(true);
   const [verifying, setVerifying] = useState(false);
+  const [repairing, setRepairing] = useState(false);
   const [verificationStatus, setVerificationStatus] = useState(null); // 'success', 'error', null
   const [deletingId, setDeletingId] = useState(null);
 
@@ -85,6 +86,21 @@ const BlockchainViewer = () => {
       console.error("Failed to delete block", error);
     } finally {
       setDeletingId(null);
+    }
+  };
+
+  const handleRepairChain = async () => {
+    setRepairing(true);
+    try {
+      const response = await apiConnector("POST", donationEndpoints.fixIntegrity);
+      if (response.data.success) {
+        fetchBlockchainData();
+        setVerificationStatus("success");
+      }
+    } catch (error) {
+      console.error("Repair failed", error);
+    } finally {
+      setRepairing(false);
     }
   };
 
@@ -187,6 +203,34 @@ const BlockchainViewer = () => {
             <p className="status-message success">
               All blocks are cryptographically linked and valid. No tampering detected.
             </p>
+          )}
+
+          {verificationStatus === 'error' && (
+            <div className="error-actions" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '1rem', marginTop: '1rem' }}>
+              <p className="status-message error">
+                Chain integrity is compromised! Hashes do not match.
+              </p>
+              <button 
+                onClick={handleRepairChain}
+                disabled={repairing}
+                className="repair-button"
+                style={{
+                  background: '#ff6b6b',
+                  color: 'white',
+                  border: 'none',
+                  padding: '10px 20px',
+                  borderRadius: '8px',
+                  cursor: 'pointer',
+                  display: 'flex',
+                  alignItems: 'center',
+                  gap: '8px',
+                  fontSize: '1rem',
+                  fontWeight: '600'
+                }}
+              >
+                <FaTools /> {repairing ? "Repairing..." : "Repair Blockchain"}
+              </button>
+            </div>
           )}
         </div>
       </div>
