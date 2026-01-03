@@ -98,6 +98,17 @@
           border-bottom-left-radius: 2px;
         }
       }
+
+      .chat-link {
+        color: #2e7d32;
+        text-decoration: underline;
+        font-weight: 600;
+        cursor: pointer;
+        
+        &:hover {
+          color: #1b5e20;
+        }
+      }
       
       .loading-dots {
         align-self: flex-start;

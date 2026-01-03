@@ -47,13 +47,13 @@ const Chatbot = () => {
 
         // Check if internal link (starts with /)
         if (linkUrl.startsWith('/')) {
-          return <Link key={index} to={linkUrl}>{linkText}</Link>;
+          return <Link key={index} to={linkUrl} className="chat-link">{linkText}</Link>;
         } else {
-          return <a key={index} href={linkUrl} target="_blank" rel="noopener noreferrer">{linkText}</a>;
+          return <a key={index} href={linkUrl} target="_blank" rel="noopener noreferrer" className="chat-link">{linkText}</a>;
         }
       }
       // Return text as is
-      return part;
+      return <span key={index}>{part}</span>;
     });
   };
 
