@@ -107,7 +107,7 @@ const CreateCampaign = () => {
       if (response.data.success) {
         showSuccessToast("Campaign launched successfully!");
         setTimeout(() => {
-          navigate("/trending");
+          navigate("/campaigns");
         }, 1500);
       }
     } catch (error) {

@@ -53,7 +53,7 @@ const Landing = () => {
 
           <div className="landing_ctadiv">
             {isLoggedIn ? (
-              <Button to="/clubs" className="landing_signup">
+              <Button to="/ngos" className="landing_signup">
                 <span>Explore our NGOs</span>
               </Button>
             ) : (

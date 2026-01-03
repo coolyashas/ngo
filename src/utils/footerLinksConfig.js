@@ -2,8 +2,8 @@
 
 export const footerLinks = {
   quickStarts: [
-    { name: "Trending Events", path: "/trending" },
-    { name: "NGOs near you", path: "/clubs" },
+    { name: "Trending Events", path: "/campaigns" },
+    { name: "NGOs near you", path: "/ngos" },
     { name: "Login / Signup", path: "/auth/login" },
     { name: "Events ", path: "/events" },
   ],

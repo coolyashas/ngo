@@ -20,11 +20,11 @@ const Links = [
   },
   {
     name: "NGOs",
-    link: "/clubs",
+    link: "/ngos",
   },
   {
     name: "Campaigns",
-    link: "/trending",
+    link: "/campaigns",
   },
   {
     name: "Charity Events",

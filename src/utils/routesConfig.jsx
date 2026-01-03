@@ -31,7 +31,7 @@ const routesConfig = [
     element: <ProtectedSignIn />,
   },
   { path: "/user/:userName", element: <Profile /> },
-  { path: "/clubs", element: <Clubs /> },
+  { path: "/ngos", element: <Clubs /> },
   { path: "/club/:userName", element: <Profile /> },
   { path: "/dashboard", element: <Dashboard /> },
   { path: "/events", element: <Events /> },
@@ -39,7 +39,7 @@ const routesConfig = [
   { path: "/shop", element: <Shop /> },
   { path: "/donations", element: <BlockchainViewer /> },
   { path: "/campaigns/create", element: <CreateCampaign /> },
-  { path: "/trending", element: <Trending /> },
+  { path: "/campaigns", element: <Trending /> },
   { path: "*", element: <Error404 /> },
 ];
 
