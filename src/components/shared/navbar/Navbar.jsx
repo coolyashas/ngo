@@ -38,10 +38,6 @@ const Links = [
     name: "Start Campaign",
     link: "/campaigns/create",
   },
-  {
-    name: "Marketplace",
-    link: "/shop",
-  },
 ];
 
 const Navbar = () => {
