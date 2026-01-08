@@ -9,6 +9,7 @@ const BlockchainViewer = () => {
   const [blocks, setBlocks] = useState([]);
   const [stats, setStats] = useState({ totalDonated: 0, totalBlocks: 0 });
   const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null); // Added error state
   const [verifying, setVerifying] = useState(false);
   const [repairing, setRepairing] = useState(false);
   const [verificationStatus, setVerificationStatus] = useState(null); // 'success', 'error', null
@@ -32,6 +33,7 @@ const BlockchainViewer = () => {
       }
     } catch (error) {
       console.error("Failed to fetch blockchain data", error);
+      setError(error.message || "Failed to load blockchain data");
     } finally {
       setLoading(false);
     }
@@ -132,6 +134,11 @@ const BlockchainViewer = () => {
           <div className="chain-container">
             {loading ? (
               <p>Loading blockchain...</p>
+            ) : error ? ( 
+              <div className="error-message" style={{ color: 'red', textAlign: 'center' }}>
+                <p>Error loading data: {error}</p>
+                <p>Please check your backend connection.</p>
+              </div>
             ) : blocks.length > 0 ? (
               blocks.map((block, index) => (
                 <div 
